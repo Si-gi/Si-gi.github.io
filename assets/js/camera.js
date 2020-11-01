@@ -39,6 +39,9 @@ var camera = (function() {
 		} else {
 			options.onNotSupported();
 		}
+		let supportedConstraints = navigator.mediaDevices.getSupportedConstraints();
+console.log(supportedConstraints);
+
 	}
 
 	function initCanvas() {
