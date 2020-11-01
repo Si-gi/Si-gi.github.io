@@ -204,6 +204,54 @@
 						</ul>
 				</div>
 			</section>
+			<section id="ascii_art">
+				<div class="container large">
+					<h2>a little work that i made for my own fun</h2>
+					<div class="section clearfix">
+							<video id="jscii-element-video" width="150" height="112" controls loop>
+								<source src="test/fixtures/movie.webm" type='video/webm; codecs="vp8, vorbis"' />
+								<source src="test/fixtures/movie.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
+								<source src="test/fixtures/movie.ogv" type='video/ogg; codecs="theora, vorbis"' />
+								Your browser does not support video
+							</video>
+							<div>
+								<button id="play-video">Start Render</button>
+								<button id="pause-video">Pause Render</button>
+							</div>
+							<pre id="ascii-container-video"></pre>
+						</div>
+					</div>
+					<script>
+						// example using an image and callback to render ascii string
+						var imgJscii = new Jscii({
+							width: 200,
+							color: true,
+							el: document.getElementById('jscii-element-image'),
+							fn: function(str) {
+								document.getElementById('ascii-container-image').innerHTML = str;
+							}
+						});
+				
+						// example using webrtc media stream in video element
+						var webcamJscii = new Jscii({
+							container: document.getElementById('ascii-container-webrtc'),
+							el: document.getElementById('jscii-element-webrtc'),
+							webrtc: true
+						});
+				
+						// example using normal video element
+						var videoJscii = new Jscii({
+							container: document.getElementById('ascii-container-video'),
+							el: document.getElementById('jscii-element-video')
+						});
+				
+						document.getElementById('play-webrtc').addEventListener('click', function() { webcamJscii.play(); });
+						document.getElementById('pause-webrtc').addEventListener('click', function() { webcamJscii.pause(); });
+						document.getElementById('play-video').addEventListener('click', function() { videoJscii.play(); });
+						document.getElementById('pause-video').addEventListener('click', function() { videoJscii.pause(); });
+					</script>
+				</div>
+			</section>
 			<section id="contact">
 				<div class="container large">
 					<h2>Contact me</h2>
